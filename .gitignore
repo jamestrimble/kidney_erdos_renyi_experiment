@@ -1,2 +1,4 @@
 results/
 all_results.txt
+*.log
+
