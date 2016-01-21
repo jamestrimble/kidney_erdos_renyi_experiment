@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-NDDCOUNT := 7 6 5 4 3 2 1 0
+NDDCOUNT := 10 9 8 7 6 5 4 3 2 1 0
 GENPROG := kidney_erdos_renyi_generator
 SOLVEPROG := kidney_solver
 RESULTS := results
@@ -13,7 +13,7 @@ define SIZE_template
 $(RESULTS)/$(1).out :
 	mkdir -p $$(RESULTS) && \
 	for p in $$$$(seq 0.01 0.01 0.10); do \
-		for i in $$$$(seq 1 200); do \
+		for i in $$$$(seq 1 1000); do \
 			( echo "p:" $$$$p && echo "altruist_count:" $(1) && $(GENPROG) 100 $(1) $$$$p | $(SOLVEPROG) 3 2 picef ) | \
 		    	awk -f summarise_result.awk | tee -a $$@; \
 		done \
